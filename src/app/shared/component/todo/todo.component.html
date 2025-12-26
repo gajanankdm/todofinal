@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="form-group">
+            <label for="todoitem">Todo Item</label>
+            <input type="text" #todoitem class="form-control">
+
+             <button *ngIf="!isInEditmode" (click)="onaddtodo()" mat-raised-button color="primary" class="btn btn-block mt-3">Add Todo</button>
+             <button *ngIf="isInEditmode" (click)="onupdate()"  mat-raised-button color="primary" class="btn btn-block mt-3">on update todo</button>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p>skills</p>
+            <ul class="list-group">
+                <li *ngFor="let todo of todoarr trackBy:trackById" class="list-group-item d-flex justify-content-between" >
+            {{todo.todoitem}}
+
+                    <div>
+                           <button (click)="onedit(todo)"  class="mr-3" mat-mini-fab color="primary" >
+          <mat-icon>edit</mat-icon>
+        </button>
+            <button (click)="onremove(todo.todoid)" mat-mini-fab color="accent" >
+          <mat-icon>delete</mat-icon>
+        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
